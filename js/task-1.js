@@ -1,22 +1,55 @@
-// Напиши функцію slugify(title), яка приймає заголовок статті, параметр title і повертає slug, створений із цього рядка.
+// Оголоси функцію isEnoughCapacity, яка очікує два параметри:
+
+// products — об’єкт, у якому ключі містять назви товарів, 
+// а значення — кількість цих товарів. 
+// Наприклад, { apples: 2, grapes: 4 }.
+// containerSize — число, максимальна кількість одиниць товарів, 
+// яку в себе може вмістити контейнер.
 
 
-// Значенням параметра title будуть рядки, слова яких розділені лише пробілами.
-// Усі символи slug повинні бути в нижньому регістрі.
-// Усі слова slug повинні бути розділені тире.
-// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. 
-// У консоль будуть виведені результати її роботи.
+// Функція обчислює загальну кількість товарів в об'єкті products 
+// і повертає true, якщо вона менша або дорівнює containerSize, 
+// і false — якщо ні.
 
-function slugify(title) {
-    const normalizeTitle = title.toLowerCase();
-    const cleanTitle = normalizeTitle.split(" ");
-    const slugTitle = cleanTitle.join("-");
-    return slugTitle;
+
+
+// Встав код нижче після оголошення функції для перевірки. З
+// алиш його для перевірки ментором.
+function isEnoughCapacity(products, containerSize) {
+    const productQuantity = Object.values(products);
+    let total = 0;
+    for (const quantity of productQuantity) {
+        total += quantity;
+
+    }
+    return total <= containerSize;
+    
 }
 
+console.log(
+  isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)); // true
+
+console.log(
+  isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)); // false
+
+console.log(
+  isEnoughCapacity({ apples: 1, lime: 5, tomatos: 3 }, 14)); // true
+
+console.log(
+  isEnoughCapacity({ apples: 18, potatos: 5, oranges: 2 }, 7)); // false
 
 
-console.log(slugify("Arrays for beginners")); // "arrays-for-beginners"
-console.log(slugify("English for developer")); // "english-for-developer"
-console.log(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript"
-console.log(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
+
+// Залиш цей код для перевірки ментором.
+
+
+
+// Вимоги
+
+// Оголошено функцію isEnoughCapacity(products, containerSize).
+// Виклик isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8) повертає true.
+// Виклик isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12) повертає false.
+// Виклик isEnoughCapacity({ apples: 1, lime: 5, tomatos: 3 }, 14) повертає true.
+// Виклик isEnoughCapacity({ apples: 18, potatos: 5, oranges: 2 }, 7) повертає false.
+// Виклик з будь-якими валідними аргументами повертає правильне значення.
+// Результати всіх викликів виведено в консоль.
